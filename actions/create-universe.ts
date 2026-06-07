@@ -32,7 +32,8 @@ export async function createUniverseAction(
   }
 
   try {
-    const universe = await createUniverseFromScenario(parsed.data.scenario);
+    const forceRegenerate = formData.get("forceRegenerate") === "true";
+    const universe = await createUniverseFromScenario(parsed.data.scenario, { forceRegenerate });
     redirect(`/universe/${universe.slug}`);
   } catch (error) {
     if (isRedirectError(error)) {

@@ -1,6 +1,7 @@
 import type { Prisma, Universe } from "@prisma/client";
 import { prisma } from "@/lib/db/prisma";
 import { calculateTrendingScore } from "@/lib/ranking/trending-score";
+import { normalizeScenario } from "@/lib/utils/normalize-scenario";
 
 export type UniverseWithBranchCount = Universe & {
   _count: {
@@ -27,6 +28,25 @@ export const universeRepository = {
     return prisma.universe.create({
       data: input,
     });
+  },
+
+  async findCanonicalByScenario(scenario: string) {
+    const scenarioKey = normalizeScenario(scenario);
+    const matches = await prisma.universe.findMany({
+      where: {
+        parentUniverseId: null,
+      },
+      orderBy: { createdAt: "asc" },
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        scenario: true,
+        createdAt: true,
+      },
+    });
+
+    return matches.find((universe) => normalizeScenario(universe.scenario) === scenarioKey) ?? null;
   },
 
   async slugExists(slug: string) {

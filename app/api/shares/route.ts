@@ -31,8 +31,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Universe not found" }, { status: 404 });
   }
 
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const host = forwardedHost ?? request.headers.get("host");
+  const protocol = request.headers.get("x-forwarded-proto") ?? "http";
+  const requestOrigin = host ? `${protocol}://${host}` : null;
+
   return NextResponse.json({
     ok: true,
-    url: absoluteUrl(`/universe/${parsed.data.slug}`),
+    url: requestOrigin
+      ? `${requestOrigin}/universe/${parsed.data.slug}`
+      : absoluteUrl(`/universe/${parsed.data.slug}`),
   });
 }

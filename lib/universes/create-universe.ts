@@ -14,13 +14,33 @@ type ParentContext = {
   summary: string;
 };
 
-export async function createUniverseFromScenario(scenario: string, parent?: ParentContext) {
+type CreateUniverseOptions = {
+  parent?: ParentContext;
+  forceRegenerate?: boolean;
+};
+
+export async function createUniverseFromScenario(
+  scenario: string,
+  parentOrOptions?: ParentContext | CreateUniverseOptions,
+) {
+  const options =
+    parentOrOptions && "id" in parentOrOptions
+      ? { parent: parentOrOptions }
+      : (parentOrOptions ?? {});
+
+  if (!options.parent && !options.forceRegenerate) {
+    const existing = await universeRepository.findCanonicalByScenario(scenario);
+    if (existing) {
+      return existing;
+    }
+  }
+
   const content = await generateUniverseContent(scenario, {
-    parent: parent
+    parent: options.parent
       ? {
-          title: parent.title,
-          scenario: parent.scenario,
-          summary: parent.summary,
+          title: options.parent.title,
+          scenario: options.parent.scenario,
+          summary: options.parent.summary,
         }
       : undefined,
   });
@@ -46,7 +66,7 @@ export async function createUniverseFromScenario(scenario: string, parent?: Pare
     divergenceScore,
     chaosScore,
     winner: content.winner,
-    parentUniverseId: parent?.id,
+    parentUniverseId: options.parent?.id,
     promptVersion: PROMPT_VERSION,
     model: getOpenRouterModel(),
   });

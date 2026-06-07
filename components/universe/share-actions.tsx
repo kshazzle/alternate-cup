@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Share2 } from "lucide-react";
+import { Check, Copy, Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type ShareActionsProps = {
@@ -11,7 +11,12 @@ type ShareActionsProps = {
 
 export function ShareActions({ slug, title }: ShareActionsProps) {
   const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState<string>();
+
+  function getShareUrl() {
+    return `${window.location.origin}/universe/${slug}`;
+  }
 
   async function recordShare() {
     const response = await fetch("/api/shares", {
@@ -19,21 +24,22 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ slug }),
     });
+
     if (!response.ok) {
       throw new Error("Share could not be recorded");
     }
-
-    const payload = (await response.json()) as { url?: string };
-
-    return payload.url ?? window.location.href;
   }
 
   async function resolveShareUrl() {
+    const url = getShareUrl();
+
     try {
-      return await recordShare();
+      await recordShare();
     } catch {
-      return window.location.href;
+      // Still share the page the user is actually viewing.
     }
+
+    return url;
   }
 
   async function copyToClipboard(text: string) {
@@ -102,6 +108,28 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
     }
   }
 
+  async function downloadCard() {
+    setDownloading(true);
+    setError(undefined);
+    try {
+      const response = await fetch(`/universe/${slug}/opengraph-image`);
+      if (!response.ok) throw new Error("Card unavailable");
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = objectUrl;
+      link.download = `${slug}-alternate-cup.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(objectUrl);
+    } catch {
+      setError("Could not download the card. Try again in a moment.");
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   async function tweetThis() {
     const url = await resolveShareUrl();
     const text = encodeURIComponent(`${title} — explore this alternate FIFA universe`);
@@ -120,6 +148,10 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
         Tweet
+      </Button>
+      <Button type="button" variant="secondary" onClick={downloadCard} disabled={downloading}>
+        <Download className="size-4" />
+        {downloading ? "Downloading…" : "Download card"}
       </Button>
       <Button type="button" variant="secondary" onClick={copyLink}>
         {copied ? <Check className="size-4" /> : <Copy className="size-4" />}

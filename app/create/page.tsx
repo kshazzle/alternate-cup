@@ -1,4 +1,5 @@
 import { UniverseForm } from "@/components/create/universe-form";
+import { universeRepository } from "@/lib/db/repositories/universe-repository";
 import { Badge } from "@/components/ui/badge";
 
 export const maxDuration = 60;
@@ -14,6 +15,9 @@ export const metadata = {
 
 export default async function CreatePage({ searchParams }: CreatePageProps) {
   const params = await searchParams;
+  const existingUniverse = params.scenario
+    ? await universeRepository.findCanonicalByScenario(params.scenario).catch(() => null)
+    : null;
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
@@ -25,7 +29,14 @@ export default async function CreatePage({ searchParams }: CreatePageProps) {
         Ask about a player choice, injury, final, qualification miracle, tactical revolution, or impossible dynasty.
       </p>
       <div className="mt-10 rounded-[2rem] border border-white/10 bg-white/[0.05] p-5 sm:p-8">
-        <UniverseForm initialScenario={params.scenario} />
+        <UniverseForm
+          initialScenario={params.scenario}
+          existingUniverse={
+            existingUniverse
+              ? { slug: existingUniverse.slug, title: existingUniverse.title }
+              : null
+          }
+        />
       </div>
     </main>
   );
