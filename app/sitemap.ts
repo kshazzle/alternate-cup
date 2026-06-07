@@ -3,10 +3,12 @@ import { prisma } from "@/lib/db/prisma";
 import { absoluteUrl } from "@/lib/utils/absolute-url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const universes = await prisma.universe.findMany({
-    select: { slug: true, updatedAt: true },
-    orderBy: { createdAt: "desc" },
-  });
+  const universes = await prisma.universe
+    .findMany({
+      select: { slug: true, updatedAt: true },
+      orderBy: { createdAt: "desc" },
+    })
+    .catch(() => []);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), changeFrequency: "daily", priority: 1 },
