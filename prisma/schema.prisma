@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Universe {
+  id               String     @id @default(cuid())
+  slug             String     @unique
+  title            String
+  scenario         String
+  summary          String
+  generatedContent Json
+  divergenceScore  Int
+  chaosScore       Int
+  winner           String?
+  parentUniverseId String?
+  parentUniverse   Universe?  @relation("UniverseBranches", fields: [parentUniverseId], references: [id], onDelete: SetNull)
+  branches         Universe[] @relation("UniverseBranches")
+  promptVersion    String
+  model            String
+  views            Int        @default(0)
+  shares           Int        @default(0)
+  createdAt        DateTime   @default(now()) @db.Timestamptz(3)
+  updatedAt        DateTime   @updatedAt @db.Timestamptz(3)
+
+  @@index([createdAt])
+  @@index([views])
+  @@index([shares])
+  @@index([divergenceScore])
+  @@index([chaosScore])
+  @@index([parentUniverseId])
+  @@index([chaosScore, divergenceScore, createdAt])
+  @@index([parentUniverseId, createdAt])
+}
+
+model RateLimitBucket {
+  key       String   @id
+  count     Int
+  resetAt   DateTime @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([resetAt])
+}
