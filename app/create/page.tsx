@@ -1,6 +1,8 @@
 import { UniverseForm } from "@/components/create/universe-form";
 import { Badge } from "@/components/ui/badge";
 
+export const maxDuration = 60;
+
 type CreatePageProps = {
   searchParams: Promise<{ scenario?: string }>;
 };
