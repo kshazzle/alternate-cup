@@ -112,7 +112,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
     setDownloading(true);
     setError(undefined);
     try {
-      const response = await fetch(`/universe/${slug}/opengraph-image`);
+      const response = await fetch(`/universe/${slug}/card`);
       if (!response.ok) throw new Error("Card unavailable");
       const blob = await response.blob();
       const objectUrl = URL.createObjectURL(blob);
@@ -132,7 +132,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
 
   async function fetchCardFile() {
     try {
-      const response = await fetch(`/universe/${slug}/opengraph-image`);
+      const response = await fetch(`/universe/${slug}/card`);
       if (!response.ok) return null;
       const blob = await response.blob();
       return new File([blob], `${slug}-what-if-wc.png`, { type: "image/png" });
