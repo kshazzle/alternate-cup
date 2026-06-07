@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { baseUrl } from "../utils/absolute-url";
 
 export type ModelClient = {
   complete(prompt: { system: string; user: string }): Promise<string>;
@@ -19,7 +20,7 @@ export function createOpenRouterClient(): ModelClient {
     baseURL: "https://openrouter.ai/api/v1",
     apiKey,
     defaultHeaders: {
-      "HTTP-Referer": process.env.OPENROUTER_SITE_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+      "HTTP-Referer": process.env.OPENROUTER_SITE_URL ?? baseUrl(),
       "X-OpenRouter-Title": process.env.OPENROUTER_SITE_NAME ?? "What If? World Cup Edition",
     },
   });

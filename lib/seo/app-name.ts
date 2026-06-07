@@ -1,9 +1,11 @@
+import { baseUrl } from "@/lib/utils/absolute-url";
+
 export const APP_NAME = "What If? World Cup Edition";
 
 export function appHostname() {
   try {
-    return new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000").host;
+    return new URL(baseUrl()).host;
   } catch {
-    return "localhost:3000";
+    return "alternatecup.vercel.app";
   }
 }
