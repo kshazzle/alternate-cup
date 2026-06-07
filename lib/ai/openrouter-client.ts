@@ -1,6 +1,20 @@
 import OpenAI from "openai";
 import { baseUrl } from "../utils/absolute-url";
 
+function extractJson(raw: string): string {
+  const start = raw.indexOf("{");
+  if (start === -1) return raw;
+  let depth = 0;
+  for (let i = start; i < raw.length; i++) {
+    if (raw[i] === "{") depth++;
+    else if (raw[i] === "}") {
+      depth--;
+      if (depth === 0) return raw.slice(start, i + 1);
+    }
+  }
+  return raw.slice(start);
+}
+
 export type ModelClient = {
   complete(prompt: { system: string; user: string }): Promise<string>;
 };
@@ -44,7 +58,7 @@ export function createOpenRouterClient(): ModelClient {
         throw new Error("OpenRouter returned an empty response");
       }
 
-      return content;
+      return extractJson(content);
     },
   };
 }

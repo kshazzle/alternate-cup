@@ -23,13 +23,15 @@ type UniverseFormProps = {
 export function UniverseForm({ initialScenario = "", existingUniverse = null }: UniverseFormProps) {
   const [scenario, setScenario] = useState(initialScenario);
   const [forceRegenerate, setForceRegenerate] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [state, action, pending] = useActionState(createUniverseAction, initialState);
   const topicError =
     scenario.trim().length >= 12 ? assessScenarioTopic(scenario).message : undefined;
   const showTopicError = topicError && !state.error;
+  const isGenerating = pending && submitted;
 
   return (
-    <form action={action} className="space-y-6">
+    <form action={action} onSubmit={() => setSubmitted(true)} className="space-y-6">
       <input type="hidden" name="forceRegenerate" value={forceRegenerate ? "true" : "false"} />
       {existingUniverse ? (
         <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-4 text-sm text-emerald-50">
@@ -47,7 +49,7 @@ export function UniverseForm({ initialScenario = "", existingUniverse = null }: 
         value={scenario}
         onChange={(event) => setScenario(event.target.value)}
         placeholder="What if India qualified for FIFA World Cup 2026?"
-        disabled={pending}
+        disabled={isGenerating}
       />
       {state.error ? (
         <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">{state.error}</div>
@@ -62,7 +64,7 @@ export function UniverseForm({ initialScenario = "", existingUniverse = null }: 
           type="checkbox"
           checked={forceRegenerate}
           onChange={(event) => setForceRegenerate(event.target.checked)}
-          disabled={pending}
+          disabled={isGenerating}
           className="mt-1"
         />
         <span>
@@ -73,9 +75,9 @@ export function UniverseForm({ initialScenario = "", existingUniverse = null }: 
         </span>
       </label>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <Button size="lg" disabled={pending || Boolean(topicError)}>
+        <Button size="lg" disabled={isGenerating || Boolean(topicError)}>
           <Sparkles className="size-5" />
-          {pending
+          {isGenerating
             ? forceRegenerate
               ? "Generating new variant..."
               : "Generating timeline..."
@@ -85,7 +87,7 @@ export function UniverseForm({ initialScenario = "", existingUniverse = null }: 
         </Button>
         <p className="text-sm text-zinc-500">Output is saved to a shareable slug URL.</p>
       </div>
-      {pending ? <GenerationLoading /> : <SuggestedPrompts onPick={setScenario} />}
+      {isGenerating ? <GenerationLoading /> : <SuggestedPrompts onPick={setScenario} />}
     </form>
   );
 }

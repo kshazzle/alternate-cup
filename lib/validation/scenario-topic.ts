@@ -9,6 +9,7 @@ const FOOTBALL_SIGNALS = [
   /\b(goal|penalty|final|semifinal|quarter-?final|knockout|qualif(?:y|ied|ication))\b/i,
   /\b(messi|ronaldo|neymar|mbapp[eé]|haaland|modri[cć]|kane|salah|lewandowski|de bruyne|iniesta|xavi|pele|maradona)\b/i,
   /\b(brazil|argentina|portugal|spain|france|germany|england|italy|netherlands|belgium|mexico|japan|senegal|morocco|india|iceland|scotland|usa|uruguay|croatia)\b/i,
+  /\b(player|players|club|clubs|team|teams|manager|coach|transfer|signing|squad|match|matches|tournament|trophy|league|season|stadium|boyhood|debut|striker|midfielder|defender|goalkeeper|winger|captain|referee)\b/i,
 ];
 
 const OFF_TOPIC_SIGNALS = [

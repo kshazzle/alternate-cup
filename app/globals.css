@@ -34,3 +34,12 @@ body {
 .text-balance {
   text-wrap: balance;
 }
+
+@keyframes progress-sweep {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(400%); }
+}
+
+.animate-progress-sweep {
+  animation: progress-sweep 1.8s ease-in-out infinite;
+}
