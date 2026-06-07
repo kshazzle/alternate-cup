@@ -20,7 +20,7 @@ export function createOpenRouterClient(): ModelClient {
     apiKey,
     defaultHeaders: {
       "HTTP-Referer": process.env.OPENROUTER_SITE_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
-      "X-OpenRouter-Title": process.env.OPENROUTER_SITE_NAME ?? "Alternate Cup",
+      "X-OpenRouter-Title": process.env.OPENROUTER_SITE_NAME ?? "What If? World Cup Edition",
     },
   });
 

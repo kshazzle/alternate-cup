@@ -46,7 +46,7 @@ export default async function UniversePage({ params }: UniversePageProps) {
       <ViewTracker slug={universe.slug} />
       <header className="grid gap-8 py-8 lg:grid-cols-[1fr_320px] lg:items-end">
         <div>
-          <Badge>Alternate Universe</Badge>
+          <Badge>What If Timeline</Badge>
           <h1 className="text-balance mt-6 max-w-4xl text-4xl font-semibold tracking-[-0.05em] text-white md:text-6xl lg:text-7xl">
             {universe.title}
           </h1>

@@ -5,7 +5,7 @@ import { z } from "zod";
 const storedUniverseContentSchema = universeOutputSchema.extend({
   fanReactions: z
     .array(z.union([fanReactionSchema, z.string().min(8).max(200)]))
-    .length(10),
+    .min(1),
 });
 
 export type UniverseOutput = Omit<z.infer<typeof universeOutputSchema>, "fanReactions"> & {

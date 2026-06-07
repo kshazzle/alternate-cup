@@ -4,7 +4,7 @@ import { universeRepository } from "@/lib/db/repositories/universe-repository";
 
 export const metadata = {
   title: "Trending Universes",
-  description: "The Alternate Cup timelines fans are reading and sharing right now.",
+  description: "The What If? World Cup timelines fans are reading and sharing right now.",
 };
 
 export const dynamic = "force-dynamic";

@@ -118,7 +118,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
       const objectUrl = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = objectUrl;
-      link.download = `${slug}-alternate-cup.png`;
+      link.download = `${slug}-what-if-wc.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -132,7 +132,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
 
   async function tweetThis() {
     const url = await resolveShareUrl();
-    const text = encodeURIComponent(`${title} — explore this alternate FIFA universe`);
+    const text = encodeURIComponent(`${title} — What If? World Cup Edition`);
     const encodedUrl = encodeURIComponent(url);
     window.open(`https://x.com/intent/tweet?text=${text}&url=${encodedUrl}`, "_blank", "noopener,noreferrer");
   }

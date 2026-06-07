@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
 import { universeRepository } from "@/lib/db/repositories/universe-repository";
+import { APP_NAME, appHostname } from "@/lib/seo/app-name";
 
-export const alt = "Alternate Cup universe";
+export const alt = "What If? World Cup Edition universe";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -47,7 +48,7 @@ export default async function Image({ params }: OgImageProps) {
               textTransform: "uppercase",
             }}
           >
-            Alternate Cup
+            {APP_NAME}
           </span>
           <div style={{ display: "flex", gap: 10 }}>
             <div
@@ -158,7 +159,7 @@ export default async function Image({ params }: OgImageProps) {
             </div>
           </div>
           <span style={{ color: "#3f3f46", fontSize: 16, letterSpacing: 1 }}>
-            alternatecup.vercel.app
+            {appHostname()}
           </span>
         </div>
       </div>

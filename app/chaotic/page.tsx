@@ -3,7 +3,7 @@ import { universeRepository } from "@/lib/db/repositories/universe-repository";
 
 export const metadata = {
   title: "Most Chaotic Universes",
-  description: "The wildest Alternate Cup timelines ranked by chaos score.",
+  description: "The wildest What If? World Cup timelines ranked by chaos score.",
 };
 
 export const dynamic = "force-dynamic";

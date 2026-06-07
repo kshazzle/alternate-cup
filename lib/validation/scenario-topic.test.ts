@@ -6,7 +6,7 @@ describe("assessScenarioTopic", () => {
     const result = assessScenarioTopic("hey how do i sort an array in O of n log n");
 
     expect(result.ok).toBe(false);
-    expect(result.message).toContain("FIFA World Cup");
+    expect(result.message).toContain("What If? World Cup Edition");
   });
 
   it("accepts believable football scenarios", () => {

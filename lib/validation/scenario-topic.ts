@@ -35,7 +35,7 @@ export function assessScenarioTopic(scenario: string): ScenarioTopicAssessment {
     return {
       ok: false,
       message:
-        "Alternate Cup only generates FIFA World Cup what-if scenarios. Try something like: What if India qualified for the 2026 World Cup?",
+        "What If? World Cup Edition only generates FIFA World Cup what-if scenarios. Try something like: What if India qualified for the 2026 World Cup?",
     };
   }
 

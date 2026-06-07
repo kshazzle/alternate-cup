@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { APP_NAME } from "@/lib/seo/app-name";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,14 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   title: {
-    default: "Alternate Cup",
-    template: "%s | Alternate Cup",
+    default: APP_NAME,
+    template: `%s | ${APP_NAME}`,
   },
-  description: "Explore believable alternate FIFA World Cup timelines generated with AI.",
+  description: "Explore believable what-if FIFA World Cup timelines generated with AI.",
   openGraph: {
-    title: "Alternate Cup",
-    description: "AI-generated alternate football universes for World Cup obsessives.",
-    siteName: "Alternate Cup",
+    title: APP_NAME,
+    description: "AI-generated World Cup what-if universes for football obsessives.",
+    siteName: APP_NAME,
     type: "website",
   },
 };
