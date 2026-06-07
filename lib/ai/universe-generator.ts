@@ -35,6 +35,9 @@ ${lastValidationError}
 Return corrected strict JSON only. Include every required field and fully populate all arrays (headlines: 5 items, fanReactions: 10 objects with handle and quote, groupStage and knockoutStage: at least 4 items each).`,
           },
     );
+
+    console.log("[universe-generator] raw response (first 500 chars):", rawContent.slice(0, 500));
+
     const parsed = parseJsonObject(rawContent);
     const result = universeOutputSchema.safeParse(parsed);
 
@@ -42,6 +45,7 @@ Return corrected strict JSON only. Include every required field and fully popula
       return result.data;
     }
 
+    console.error("[universe-generator] schema mismatch, parsed keys:", parsed && typeof parsed === "object" ? Object.keys(parsed as object) : typeof parsed);
     lastValidationError = result.error.message;
   }
 
