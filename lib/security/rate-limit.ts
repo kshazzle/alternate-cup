@@ -49,49 +49,30 @@ export async function checkPersistentRateLimit(key: string, options: RateLimitOp
   const now = new Date();
   const resetAt = new Date(now.getTime() + options.windowMs);
 
-  return prisma.$transaction(async (tx) => {
-    const reset = await tx.rateLimitBucket.updateMany({
-      where: {
-        key,
-        resetAt: { lte: now },
-      },
-      data: {
-        count: 1,
-        resetAt,
-      },
-    });
-
-    if (reset.count > 0) {
-      return { allowed: true, remaining: options.limit - 1 };
-    }
-
-    const incremented = await tx.rateLimitBucket.updateMany({
-      where: {
-        key,
-        count: { lt: options.limit },
-        resetAt: { gt: now },
-      },
-      data: {
-        count: { increment: 1 },
-      },
-    });
-
-    if (incremented.count > 0) {
-      const bucket = await tx.rateLimitBucket.findUniqueOrThrow({ where: { key } });
-
-      return { allowed: true, remaining: Math.max(0, options.limit - bucket.count), resetAt: bucket.resetAt };
-    }
-
-    try {
-      await tx.rateLimitBucket.create({
-        data: { key, count: 1, resetAt },
-      });
-
-      return { allowed: true, remaining: options.limit - 1, resetAt };
-    } catch {
-      const bucket = await tx.rateLimitBucket.findUnique({ where: { key } });
-
-      return { allowed: false, remaining: 0, resetAt: bucket?.resetAt };
-    }
+  const reset = await prisma.rateLimitBucket.updateMany({
+    where: { key, resetAt: { lte: now } },
+    data: { count: 1, resetAt },
   });
+
+  if (reset.count > 0) {
+    return { allowed: true, remaining: options.limit - 1 };
+  }
+
+  const incremented = await prisma.rateLimitBucket.updateMany({
+    where: { key, count: { lt: options.limit }, resetAt: { gt: now } },
+    data: { count: { increment: 1 } },
+  });
+
+  if (incremented.count > 0) {
+    const bucket = await prisma.rateLimitBucket.findUniqueOrThrow({ where: { key } });
+    return { allowed: true, remaining: Math.max(0, options.limit - bucket.count), resetAt: bucket.resetAt };
+  }
+
+  try {
+    await prisma.rateLimitBucket.create({ data: { key, count: 1, resetAt } });
+    return { allowed: true, remaining: options.limit - 1, resetAt };
+  } catch {
+    const bucket = await prisma.rateLimitBucket.findUnique({ where: { key } });
+    return { allowed: false, remaining: 0, resetAt: bucket?.resetAt };
+  }
 }
