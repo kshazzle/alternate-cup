@@ -20,7 +20,7 @@ export type ModelClient = {
 };
 
 export function getOpenRouterModel() {
-  return process.env.OPENROUTER_MODEL ?? "deepseek/deepseek-chat";
+  return process.env.OPENROUTER_MODEL ?? "google/gemini-flash-1.5";
 }
 
 export function createOpenRouterClient(): ModelClient {
@@ -48,7 +48,7 @@ export function createOpenRouterClient(): ModelClient {
           { role: "user", content: prompt.user },
         ],
         temperature: 0.85,
-        max_tokens: 4096,
+        max_tokens: 3000,
         response_format: { type: "json_object" },
       });
 
