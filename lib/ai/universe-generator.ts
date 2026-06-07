@@ -7,7 +7,7 @@ type GenerateOptions = ModelClient & {
   parent?: Parameters<typeof buildUniversePrompt>[0]["parent"];
 };
 
-const MAX_GENERATION_ATTEMPTS = 2;
+const MAX_GENERATION_ATTEMPTS = 3;
 
 export async function generateUniverseContent(
   scenario: string,
