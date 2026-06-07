@@ -10,7 +10,7 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function TrendingPage() {
-  const universes = await universeRepository.listTrending(12).catch(() => []);
+  const universes = await universeRepository.listLatest(12).catch(() => []);
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
