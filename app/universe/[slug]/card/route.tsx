@@ -327,7 +327,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
                 }}
               />
               <span style={{ fontSize: 18, color: "#a1a1aa", lineHeight: 1.6, fontStyle: "italic" }}>
-                "{truncate(headline, 100)}"
+                &quot;{truncate(headline, 100)}&quot;
               </span>
             </div>
           ) : null}
