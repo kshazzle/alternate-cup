@@ -124,35 +124,9 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
     }
   }
 
-  async function fetchCardFile() {
-    try {
-      const response = await fetch(`/universe/${slug}/card`);
-      if (!response.ok) return null;
-      const blob = await response.blob();
-      return new File([blob], `${slug}-what-if-wc.png`, { type: "image/png" });
-    } catch {
-      return null;
-    }
-  }
-
-  async function tweetThis() {
+  function tweetThis() {
     const url = resolveShareUrl();
     const text = `${title} — What If? World Cup Edition`;
-
-    // On mobile and desktop Safari, Web Share API supports file attachment.
-    // The image lands directly in the compose sheet when the user picks X/Twitter.
-    const cardFile = await fetchCardFile();
-    if (cardFile && navigator.canShare?.({ files: [cardFile] })) {
-      try {
-        await navigator.share({ files: [cardFile], text, url });
-        return;
-      } catch {
-        // User cancelled or share failed — fall through to intent URL.
-      }
-    }
-
-    // Desktop fallback: open X intent. The image still shows as a large card
-    // preview in the tweet because of the twitter:card meta tags on the page.
     const encodedText = encodeURIComponent(text);
     const encodedUrl = encodeURIComponent(url);
     window.open(

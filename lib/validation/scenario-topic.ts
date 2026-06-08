@@ -29,7 +29,7 @@ const BLOCKED_SIGNALS: { pattern: RegExp; message: string }[] = [
     message: "Keep it football — scenarios involving war, conflict, or political violence aren't supported.",
   },
   {
-    pattern: /\b(israel|palestine|gaza|ukraine|russia|taiwan|china|nato|cia|fbi|isis|hamas|hezbollah|putin|trump|biden|modi|xi jinping)\b/i,
+    pattern: /\b(israel|palestine|gaza|ukraine|russia|taiwan|china|nato|cia|fbi|isis|hamas|hezbollah|putin|trump|biden|modi|xi jinping|kim jong|north korea|south korea)\b/i,
     message: "Keep it football — scenarios involving political figures or active geopolitical conflicts aren't supported.",
   },
   {
