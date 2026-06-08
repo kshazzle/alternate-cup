@@ -78,6 +78,15 @@ export function createOpenRouterClient(): ModelClient {
         throw new Error("OpenRouter returned an empty response");
       }
 
+      const usage = response.usage;
+      if (usage) {
+        const inputCost = (usage.prompt_tokens / 1_000_000) * 0.15;
+        const outputCost = (usage.completion_tokens / 1_000_000) * 0.60;
+        console.log(
+          `[openrouter] model=${getOpenRouterModel()} prompt=${usage.prompt_tokens} completion=${usage.completion_tokens} cost=$${(inputCost + outputCost).toFixed(6)}`,
+        );
+      }
+
       return extractJson(content);
     },
   };
