@@ -51,6 +51,11 @@ export default async function UniversePage({ params }: UniversePageProps) {
             {universe.title}
           </h1>
           <p className="mt-5 max-w-3xl text-xl leading-9 text-zinc-300">{content.summary}</p>
+          {universe.createdBy ? (
+            <p className="mt-3 text-sm text-zinc-500">
+              Imagined by <span className="text-zinc-300">{universe.createdBy}</span>
+            </p>
+          ) : null}
         </div>
         <div className="space-y-4">
           <ShareActions slug={universe.slug} title={universe.title} />

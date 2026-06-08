@@ -17,6 +17,7 @@ export async function createUniverseAction(
 ): Promise<CreateUniverseState> {
   const parsed = universeInputSchema.safeParse({
     scenario: formData.get("scenario"),
+    createdBy: formData.get("createdBy"),
   });
 
   if (!parsed.success) {
@@ -39,7 +40,10 @@ export async function createUniverseAction(
 
   try {
     const forceRegenerate = formData.get("forceRegenerate") === "true";
-    const universe = await createUniverseFromScenario(parsed.data.scenario, { forceRegenerate });
+    const universe = await createUniverseFromScenario(parsed.data.scenario, {
+      forceRegenerate,
+      createdBy: parsed.data.createdBy,
+    });
     redirect(`/universe/${universe.slug}`);
   } catch (error) {
     if (isRedirectError(error)) {

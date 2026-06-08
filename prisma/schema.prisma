@@ -23,6 +23,7 @@ model Universe {
   branches         Universe[] @relation("UniverseBranches")
   promptVersion    String
   model            String
+  createdBy        String?
   views            Int        @default(0)
   shares           Int        @default(0)
   createdAt        DateTime   @default(now()) @db.Timestamptz(3)

@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - main [ref=e238]:
+    - generic [ref=e239]: Create Universe
+    - heading "Drop one football what-if. Get an entire alternate world." [level=1] [ref=e240]
+    - paragraph [ref=e241]: Ask about a player choice, injury, final, qualification miracle, tactical revolution, or impossible dynasty.
+    - generic [ref=e243]:
+      - textbox "What if India qualified for FIFA World Cup 2026?" [ref=e244]
+      - generic [ref=e245]:
+        - checkbox "Generate a new variant anyway Creates a fresh AI timeline with a new slug. Use this only if you want a different take on the same scenario." [ref=e246]
+        - generic [ref=e247]:
+          - text: Generate a new variant anyway
+          - generic [ref=e248]: Creates a fresh AI timeline with a new slug. Use this only if you want a different take on the same scenario.
+      - generic [ref=e249]:
+        - button "Generate universe" [ref=e250]:
+          - img [ref=e251]
+          - text: Generate universe
+        - paragraph [ref=e254]: Output is saved to a shareable slug URL.
+      - generic [ref=e255]:
+        - button "What if India qualified for FIFA World Cup 2026?" [ref=e256]
+        - button "What if Messi chose Spain instead of Argentina?" [ref=e257]
+        - button "What if Neymar never got injured in 2014?" [ref=e258]
+        - button "What if Ronaldo won the 2022 World Cup?" [ref=e259]
+        - button "What if Brazil won every World Cup since 2002?" [ref=e260]
+        - button "What if Ghana reached the 2010 World Cup final?" [ref=e261]
+  - alert [ref=e27]: Create Universe | What If? World Cup Edition

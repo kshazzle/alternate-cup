@@ -1,0 +1,3 @@
+[   72051ms] [ERROR] Failed to load resource: the server responded with a status of 504 () @ https://whatif-worldcup.vercel.app/create:0
+[   72077ms] Error: An unexpected response was received from the server.
+    at M (https://whatif-worldcup.vercel.app/_next/static/chunks/255-98a0bdaa30757bda.js:1:30981)

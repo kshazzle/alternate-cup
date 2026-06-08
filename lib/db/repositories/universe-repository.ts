@@ -19,6 +19,7 @@ export type CreateUniverseInput = {
   chaosScore: number;
   winner?: string | null;
   parentUniverseId?: string | null;
+  createdBy?: string | null;
   promptVersion: string;
   model: string;
 };

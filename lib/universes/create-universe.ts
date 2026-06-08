@@ -17,6 +17,7 @@ type ParentContext = {
 type CreateUniverseOptions = {
   parent?: ParentContext;
   forceRegenerate?: boolean;
+  createdBy?: string | null;
 };
 
 export async function createUniverseFromScenario(
@@ -67,6 +68,7 @@ export async function createUniverseFromScenario(
     chaosScore,
     winner: content.winner,
     parentUniverseId: options.parent?.id,
+    createdBy: options.createdBy ?? null,
     promptVersion: PROMPT_VERSION,
     model: getOpenRouterModel(),
   });

@@ -51,6 +51,20 @@ export function UniverseForm({ initialScenario = "", existingUniverse = null }: 
         placeholder="What if India qualified for FIFA World Cup 2026?"
         disabled={isGenerating}
       />
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor="createdBy" className="text-sm text-zinc-400">
+          Your name <span className="text-zinc-600">(optional)</span>
+        </label>
+        <input
+          id="createdBy"
+          name="createdBy"
+          type="text"
+          maxLength={50}
+          placeholder="e.g. Kshitij"
+          disabled={isGenerating}
+          className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-white/20 disabled:opacity-50"
+        />
+      </div>
       {state.error ? (
         <div className="rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-100">{state.error}</div>
       ) : null}
