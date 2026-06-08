@@ -4,7 +4,7 @@ import { TrendingPreview } from "@/components/landing/trending-preview";
 import { TopUpvotedPreview } from "@/components/landing/top-upvoted-preview";
 import { universeRepository } from "@/lib/db/repositories/universe-repository";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function Home() {
   const [trending, topUpvoted] = await Promise.all([

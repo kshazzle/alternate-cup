@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { auth } from "@/auth";
 import { AwardsGrid } from "@/components/universe/awards-grid";
 import { BranchUniverseCard } from "@/components/universe/branch-universe-card";
 import { ButterflyTimeline } from "@/components/universe/butterfly-timeline";
@@ -15,7 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { universeRepository } from "@/lib/db/repositories/universe-repository";
 import { createUniverseMetadata } from "@/lib/seo/metadata";
 import { parseUniverseContent } from "@/lib/universes/content";
-import { getUpvoteState } from "@/actions/upvote";
+
+export const revalidate = 60;
 
 type UniversePageProps = {
   params: Promise<{ slug: string }>;
@@ -36,17 +36,13 @@ export async function generateMetadata({ params }: UniversePageProps) {
 
 export default async function UniversePage({ params }: UniversePageProps) {
   const { slug } = await params;
-  const [universe, session] = await Promise.all([
-    universeRepository.findBySlug(slug).catch(() => null),
-    auth(),
-  ]);
+  const universe = await universeRepository.findBySlug(slug).catch(() => null);
 
   if (!universe) {
     notFound();
   }
 
   const content = parseUniverseContent(universe.generatedContent);
-  const { upvoted } = await getUpvoteState(universe.id, session?.user?.id);
 
   return (
     <StoryShell>
@@ -67,12 +63,7 @@ export default async function UniversePage({ params }: UniversePageProps) {
         <div className="space-y-4">
           <div className="flex flex-wrap gap-3">
             <ShareActions slug={universe.slug} title={universe.title} />
-            <UpvoteButton
-              universeId={universe.id}
-              initialCount={universe.upvoteCount}
-              initialUpvoted={upvoted}
-              isSignedIn={Boolean(session?.user)}
-            />
+            <UpvoteButton universeId={universe.id} initialCount={universe.upvoteCount} />
           </div>
           <DivergenceScore divergenceScore={universe.divergenceScore} chaosScore={universe.chaosScore} />
         </div>

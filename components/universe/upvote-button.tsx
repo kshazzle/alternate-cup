@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronUp } from "lucide-react";
 import { toggleUpvoteAction } from "@/actions/upvote";
@@ -9,20 +9,30 @@ import { cn } from "@/lib/utils";
 type UpvoteButtonProps = {
   universeId: string;
   initialCount: number;
-  initialUpvoted: boolean;
-  isSignedIn: boolean;
 };
 
-export function UpvoteButton({
-  universeId,
-  initialCount,
-  initialUpvoted,
-  isSignedIn,
-}: UpvoteButtonProps) {
-  const [upvoted, setUpvoted] = useState(initialUpvoted);
+export function UpvoteButton({ universeId, initialCount }: UpvoteButtonProps) {
+  const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(initialCount);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [pending, startTransition] = useTransition();
   const router = useRouter();
+
+  useEffect(() => {
+    fetch(`/api/upvote-state?universeId=${universeId}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setUpvoted(data.upvoted ?? false);
+        setIsSignedIn(data.upvoted !== undefined);
+      })
+      .catch(() => {});
+
+    // Determine sign-in state separately via a lightweight check
+    fetch("/api/auth/session")
+      .then((r) => r.json())
+      .then((s) => setIsSignedIn(Boolean(s?.user)))
+      .catch(() => {});
+  }, [universeId]);
 
   function handleClick() {
     if (!isSignedIn) {

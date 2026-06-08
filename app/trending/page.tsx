@@ -7,7 +7,7 @@ export const metadata = {
   description: "The What If? World Cup timelines fans are reading and sharing right now.",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function TrendingPage() {
   const universes = await universeRepository.listLatest(12).catch(() => []);

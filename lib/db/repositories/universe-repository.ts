@@ -1,4 +1,5 @@
 import type { Prisma, Universe } from "@prisma/client";
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/db/prisma";
 import { calculateTrendingScore } from "@/lib/ranking/trending-score";
 import { normalizeScenario } from "@/lib/utils/normalize-scenario";
@@ -75,29 +76,29 @@ export const universeRepository = {
     });
   },
 
-  async listLatest(limit = 6) {
-    return prisma.universe.findMany({
-      orderBy: { createdAt: "desc" },
-      take: limit,
-      include: {
-        _count: {
-          select: { branches: true },
-        },
-      },
-    });
-  },
+  listLatest: unstable_cache(
+    async (limit = 6) => {
+      return prisma.universe.findMany({
+        orderBy: { createdAt: "desc" },
+        take: limit,
+        include: { _count: { select: { branches: true } } },
+      });
+    },
+    ["listLatest"],
+    { revalidate: 60 },
+  ),
 
-  async listMostChaotic(limit = 12) {
-    return prisma.universe.findMany({
-      orderBy: [{ chaosScore: "desc" }, { divergenceScore: "desc" }, { createdAt: "desc" }],
-      take: limit,
-      include: {
-        _count: {
-          select: { branches: true },
-        },
-      },
-    });
-  },
+  listMostChaotic: unstable_cache(
+    async (limit = 12) => {
+      return prisma.universe.findMany({
+        orderBy: [{ chaosScore: "desc" }, { divergenceScore: "desc" }, { createdAt: "desc" }],
+        take: limit,
+        include: { _count: { select: { branches: true } } },
+      });
+    },
+    ["listMostChaotic"],
+    { revalidate: 60 },
+  ),
 
   async listTrending(limit = 12) {
     const universes = await prisma.universe.findMany({
@@ -145,13 +146,17 @@ export const universeRepository = {
     });
   },
 
-  async listTopUpvoted(limit = 12) {
-    return prisma.universe.findMany({
-      orderBy: [{ upvoteCount: "desc" }, { createdAt: "desc" }],
-      take: limit,
-      include: { _count: { select: { branches: true } } },
-    });
-  },
+  listTopUpvoted: unstable_cache(
+    async (limit = 12) => {
+      return prisma.universe.findMany({
+        orderBy: [{ upvoteCount: "desc" }, { createdAt: "desc" }],
+        take: limit,
+        include: { _count: { select: { branches: true } } },
+      });
+    },
+    ["listTopUpvoted"],
+    { revalidate: 60 },
+  ),
 
   async search(query: string, limit = 20) {
     const q = query.trim();

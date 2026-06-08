@@ -6,7 +6,7 @@ export const metadata = {
   description: "The wildest What If? World Cup timelines ranked by chaos score.",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ChaoticPage() {
   const universes = await universeRepository.listMostChaotic(12).catch(() => []);
