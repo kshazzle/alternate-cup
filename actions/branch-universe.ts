@@ -5,7 +5,7 @@ import { universeRepository } from "@/lib/db/repositories/universe-repository";
 import { checkPersistentRateLimit } from "@/lib/security/rate-limit";
 import { getRequestFingerprint } from "@/lib/security/request-fingerprint";
 import { createUniverseFromScenario } from "@/lib/universes/create-universe";
-import { universeInputSchema } from "@/lib/validation/universe-input.schema";
+import { branchInputSchema } from "@/lib/validation/universe-input.schema";
 
 export type BranchUniverseState = {
   error?: string;
@@ -16,7 +16,7 @@ export async function branchUniverseAction(
   formData: FormData,
 ): Promise<BranchUniverseState> {
   const slug = String(formData.get("slug") ?? "");
-  const parsed = universeInputSchema.safeParse({
+  const parsed = branchInputSchema.safeParse({
     scenario: formData.get("scenario"),
   });
 
