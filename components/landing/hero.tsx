@@ -5,19 +5,19 @@ import { Badge } from "@/components/ui/badge";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:px-8">
+    <section className="relative overflow-hidden px-6 py-10 sm:py-14 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <Badge>AI World Cup multiverse</Badge>
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+        <div className="mt-6 grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
-            <h1 className="text-balance text-6xl font-semibold tracking-[-0.06em] text-white sm:text-7xl lg:text-8xl">
+            <h1 className="text-balance text-5xl font-semibold tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl">
               Rewrite football history without breaking believability.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+            <p className="mt-4 max-w-2xl text-lg leading-8 text-zinc-300">
               What If? World Cup Edition turns wild what-ifs into full sports-media universes: timelines, tournaments,
               awards, headlines, fan reactions, and legacy.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/create">
                   <Sparkles className="size-5" />
