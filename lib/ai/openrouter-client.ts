@@ -40,7 +40,7 @@ export type ModelClient = {
 };
 
 export function getOpenRouterModel() {
-  return process.env.OPENROUTER_MODEL ?? "deepseek/deepseek-v4-flash";
+  return process.env.OPENROUTER_MODEL ?? "google/gemini-flash-1.5";
 }
 
 export function createOpenRouterClient(): ModelClient {
