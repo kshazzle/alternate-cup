@@ -63,6 +63,7 @@ const seedUniverses = [
     winner: "Brazil",
     views: 1240,
     shares: 118,
+    upvoteCount: 34,
   },
 
   {
@@ -123,6 +124,7 @@ const seedUniverses = [
     winner: "Iceland",
     views: 8410,
     shares: 2203,
+    upvoteCount: 312,
   },
 
   {
@@ -243,6 +245,7 @@ const seedUniverses = [
     winner: "Germany",
     views: 19230,
     shares: 7800,
+    upvoteCount: 445,
   },
 
   {
@@ -303,6 +306,7 @@ const seedUniverses = [
     winner: "Portugal",
     views: 22100,
     shares: 9340,
+    upvoteCount: 389,
   },
 
   {
@@ -363,6 +367,7 @@ const seedUniverses = [
     winner: "Morocco",
     views: 11540,
     shares: 4120,
+    upvoteCount: 271,
   },
 
   {
@@ -423,6 +428,325 @@ const seedUniverses = [
     winner: "Portugal",
     views: 17680,
     shares: 6910,
+    upvoteCount: 334,
+  },
+
+  // ── DARK / NEGATIVE TIMELINES ──────────────────────────────────────────────
+
+  {
+    slug: "france-bottles-2018-final",
+    title: "Les Bleus Collapse",
+    scenario: "What if France collapsed in the 2018 World Cup final and lost to Croatia?",
+    summary:
+      "The most complete squad in a generation implodes under pressure. Croatia win their first World Cup. France's golden era ends not with a trophy but with a 90th-minute capitulation that haunts a generation.",
+    generatedContent: {
+      title: "Les Bleus Collapse",
+      summary:
+        "The most complete squad in a generation implodes under pressure. Croatia win their first World Cup. France's golden era ends not with a trophy but with a 90th-minute capitulation that haunts a generation.",
+      butterflyTimeline: [
+        "Griezmann misses a penalty in the 58th minute that would have made it 3-1",
+        "Lloris fumbles a routine cross — the error that defines his career in this timeline",
+        "Mbappé is substituted off injured at 72 minutes, removing France's outlet completely",
+        "Croatia's relentless pressing finally breaks French legs in the final 15 minutes",
+      ],
+      groupStage: [
+        "France cruise through the group stage — Mbappé scores four, Griezmann two",
+        "Croatia survive a horror group stage, coming from behind in all three games",
+        "Belgium push France to 102 minutes in the semifinal — French complacency begins here",
+        "Croatia eliminate England on penalties in a semifinal described as cruel but fair",
+      ],
+      knockoutStage: [
+        "France beat Argentina in a classic — Mbappé announces himself to the world",
+        "Croatia come from 2-1 down against Russia in the quarterfinal — their resilience is supernatural",
+        "France beat Belgium 1-0 in the semifinal, looking unbeatable — dangerously so",
+        "Croatia beat France 3-2 in one of the most dramatic finals in World Cup history",
+      ],
+      winner: "Croatia",
+      goldenBoot: "Antoine Griezmann",
+      goldenBall: "Luka Modrić",
+      youngPlayer: "Kylian Mbappé",
+      fairPlay: "France",
+      headlines: [
+        "Croatia Are World Champions. The Impossible Has Happened.",
+        "France Collapse: How The Best Team Lost The Biggest Game",
+        "Lloris Error Will Be Replayed Forever. France Cannot Escape It.",
+        "Modrić's Croatia: The Greatest Underdog Story In World Cup History",
+        "Mbappé Leaves Russia Without A Winner's Medal. The Wound Will Drive Him For Years.",
+      ],
+      fanReactions: [
+        { handle: "LesBleusFan", quote: "We had the best squad on earth and somehow found a way. France always finds a way to break hearts." },
+        { handle: "CroatiaForever", quote: "A nation of 4 million. World champions. I will never stop crying." },
+        { handle: "ModricMagic", quote: "He ran 15km. In a World Cup final. At 32. Ballon d'Or was the bare minimum." },
+        { handle: "LlorisWatch", quote: "Lloris has played 900 games for Spurs. He will never escape that moment. Not once." },
+        { handle: "MbappeTimeline", quote: "He leaves Russia at 19 without a medal. This either breaks him or makes him. We know which." },
+        { handle: "FranceGoldenGen", quote: "Pogba, Griezmann, Mbappé, Kanté — and they LOST. Football is genuinely cruel." },
+        { handle: "DalmatiaMoment", quote: "The entire country of Croatia watching on giant screens. This image belongs in a museum." },
+        { handle: "WorldCupFinals", quote: "Every France supporter born after 1998 just experienced 2006 England energy. Welcome to the club." },
+        { handle: "TacticsNerd99", quote: "Deschamps took Mbappé off. With France 2-2 in a World Cup final. Twenty years as a manager and nothing explains that substitution." },
+        { handle: "GoldenGenCurse", quote: "Best generation France has ever had. Zero World Cups from this squad. Football doesn't care about talent." },
+      ],
+      legacy:
+        "France's collapse triggers a brutal post-mortem in French football. Deschamps leaves. A tactical revolution begins. Mbappé carries the wound into club football and eventually into a 2022 redemption arc that feels hollow without the 2018 trophy. Croatia's win permanently reshapes small-nation ambitions — and the population-equals-destiny assumption never fully recovers.",
+    },
+    divergenceScore: 72,
+    chaosScore: 78,
+    winner: "Croatia",
+    views: 8920,
+    shares: 2340,
+    upvoteCount: 142,
+  },
+
+  {
+    slug: "brazil-20-year-world-cup-drought",
+    title: "The Drought",
+    scenario: "What if Brazil failed to win a single World Cup between 2002 and 2030?",
+    summary:
+      "The most decorated nation in World Cup history goes 28 years without a trophy. A generation of Brazilian superstars — Ronaldinho, Neymar, Vinicius — all exit without the ultimate prize. The beautiful game's most important dynasty collapses in slow motion.",
+    generatedContent: {
+      title: "The Drought",
+      summary:
+        "The most decorated nation in World Cup history goes 28 years without a trophy. A generation of Brazilian superstars — Ronaldinho, Neymar, Vinicius — all exit without the ultimate prize. The beautiful game's most important dynasty collapses in slow motion.",
+      butterflyTimeline: [
+        "2006: Ronaldinho at his peak — Brazil lose on penalties to France in the quarterfinal",
+        "2010: Brazil dismantle teams for 5 games then capitulate 3-0 to Netherlands in the quarterfinal",
+        "2014: Brazil host the tournament — and suffer the most humiliating defeat in World Cup history",
+        "2018: Neymar's theatrics become a meme. Belgium eliminate them. The squad fractures.",
+        "2022: Neymar injured again. Brazil exit to Croatia on penalties. The pattern is set in stone.",
+      ],
+      groupStage: [
+        "Brazil enter every tournament as favourites — with squads worth £800m+ — and exit before they should",
+        "2026: Vinicius scores five in the group stage. Brazil concede in the 91st minute against England and go out.",
+        "The Seleção's tactical rigidity under four different managers produces identical results",
+        "Brazilian fans begin booing their own players in qualifying. The rot reaches the grassroots.",
+      ],
+      knockoutStage: [
+        "2026: Brazil lose to England in the round of 16 on penalties — their fourth shootout loss in six tournaments",
+        "2030: A rebuilt young squad reaches the semifinal — then freezes. 0-0 after 120 minutes. Penalties. They miss three.",
+        "Every exit produces the same press conference. 'We deserved more.' 'The squad is good enough.' 'Next time.'",
+        "There is no next time for this generation. There never is.",
+      ],
+      winner: "Various (never Brazil)",
+      goldenBoot: "Vinicius Junior",
+      goldenBall: "None from Brazil",
+      youngPlayer: "Endrick",
+      fairPlay: "Japan",
+      headlines: [
+        "28 Years. No Trophy. Brazil's World Cup Dynasty Is Over.",
+        "Neymar Retires Without A World Cup. The Weight Of It Is Visible.",
+        "The Seleção Crisis: How Brazil Spent £4bn On Talent And Won Nothing",
+        "Ronaldinho At 60: 'We Had Everything. I Don't Know What Happened.'",
+        "Brazilian Youth Football Collapses As Parents Choose Other Sports",
+      ],
+      fanReactions: [
+        { handle: "TorcidaBrasil", quote: "I watched my grandfather die believing Brazil would win again. He died waiting. I understand now." },
+        { handle: "Joga_Nao_Bonito", quote: "We stopped playing joga bonito and started playing scared football. That's where it went wrong." },
+        { handle: "NeymarsGhost", quote: "He dived, he cried, he theatrics'd his way through four World Cups. And left with nothing." },
+        { handle: "ViniciusPain", quote: "Vinicius is the best player on earth. And he'll never win a World Cup. Football is broken." },
+        { handle: "Maracana2014", quote: "The 7-1 was the beginning. Not a freak result. A diagnosis. We just refused to treat it." },
+        { handle: "BrazilianDad", quote: "My son asked me why Brazil never win the World Cup anymore. I had no answer." },
+        { handle: "TacticsAnlyzer", quote: "Four different managers. Same 4-2-3-1. Same defensive fragility. Same quarterfinal exits. It's not bad luck. It's a choice." },
+        { handle: "SeleçãoObituário", quote: "Pelé built it. Zagallo sustained it. Scolari capped it. And then it just... stopped." },
+        { handle: "FootballDecay", quote: "The Brazilian football ecosystem produced fewer domestic league viewers every year from 2010. The talent pipeline dried before anyone admitted it." },
+        { handle: "GoldenGenerationCurse", quote: "Ronaldinho. Ronaldo. Adriano. Kaká. Robinho. All peak together. Lose to France in a quarterfinal. How is this possible." },
+      ],
+      legacy:
+        "Brazil's 28-year drought reshapes South American football permanently. Investment shifts to Argentina and Colombia. The Brazilian domestic league loses three major sponsors. A government inquiry into football governance triggers the first serious reform of the CBF in decades. The conversation about whether Brazil will ever win again becomes the defining question of the sport.",
+    },
+    divergenceScore: 89,
+    chaosScore: 85,
+    winner: "Various (never Brazil)",
+    views: 13400,
+    shares: 4870,
+    upvoteCount: 218,
+  },
+
+  {
+    slug: "englands-golden-gen-2006-disaster",
+    title: "The Great English Failure",
+    scenario: "What if England's golden generation of Beckham, Rooney, Gerrard, Lampard, and Terry all played their peak World Cup together in 2006 — and still managed to bottle it?",
+    summary:
+      "The most hyped England squad since 1966 arrives in Germany with the best players of their generation. They exit in the quarterfinal on penalties to Portugal. It is the most complete and most devastating failure in English football history.",
+    generatedContent: {
+      title: "The Great English Failure",
+      summary:
+        "The most hyped England squad since 1966 arrives in Germany with the best players of their generation. They exit in the quarterfinal on penalties to Portugal. It is the most complete and most devastating failure in English football history.",
+      butterflyTimeline: [
+        "Rooney breaks his metatarsal six weeks before the tournament — and plays anyway",
+        "Eriksson's rigid 4-4-2 neutralises three attacking players every game",
+        "Beckham and Lampard's relationship collapses after a training ground argument on day three",
+        "Gerrard and Lampard cannot play in the same midfield — no one in the coaching staff wants to say it",
+      ],
+      groupStage: [
+        "England beat Paraguay 1-0 via an own goal. The performance is described as 'organised incoherence'.",
+        "England draw Trinidad & Tobago 0-0. Sven makes five substitutions and the team gets worse.",
+        "England beat Sweden 2-2 — two Beckham corners, two headers, then two defensive errors. 2-2.",
+        "The English press has published 340 articles about Rooney's metatarsal before a ball is kicked.",
+      ],
+      knockoutStage: [
+        "England beat Ecuador 1-0 — a Beckham free kick, Beckham immediately vomits on the pitch and is substituted",
+        "England vs Portugal: Rooney sent off in the 62nd minute for stamping. With ten men, England somehow hold 0-0.",
+        "Penalties: Lampard misses. Gerrard misses. Carragher misses. Ronaldo scores the winner and winks at the camera.",
+        "The wink. It will be discussed on British television every four years until the sun explodes.",
+      ],
+      winner: "Italy",
+      goldenBoot: "Miroslav Klose",
+      goldenBall: "Zinedine Zidane",
+      youngPlayer: "Lukas Podolski",
+      fairPlay: "England",
+      headlines: [
+        "England Out. Again. On Penalties. Again. To Portugal. Again.",
+        "Rooney Sent Off. Lampard Misses. Gerrard Misses. England Miss. Again.",
+        "Ronaldo's Wink: The Most Replayed Moment In English Football History",
+        "Sven's Last Game: The Man Who Had Everything And Did Nothing With It",
+        "Golden Generation. Zero Trophies. One Nation In Permanent Mourning.",
+      ],
+      fanReactions: [
+        { handle: "ThreeUnhappyLions", quote: "Lampard misses. Then Gerrard. I was 12. I have never recovered. Not even slightly." },
+        { handle: "RonaldoWinkFC", quote: "The wink. THE WINK. He winked at his United teammates from the bench. During a World Cup quarterfinal. English football does not deserve to exist." },
+        { handle: "GerardLampardMidfield", quote: "They could not play together. Everyone knew. No one said it. That is English football in one sentence." },
+        { handle: "SvenOut", quote: "He earned £5m a year to play 4-4-2 in 2006. A system from 1987. With those players. Unforgivable." },
+        { handle: "BeckhamPuke", quote: "Beckham scored and then vomited on the pitch. I mean. That's the metaphor isn't it." },
+        { handle: "RooneyMetatarsal", quote: "A broken foot. He played on a broken foot. Lost on penalties. England." },
+        { handle: "PermanentMourning", quote: "My dad told me it would hurt less eventually. He lied. He absolutely lied." },
+        { handle: "FourthPenalty", quote: "We had Beckham, Lampard, Gerrard, Owen, Rooney. We needed five penalty takers. We had zero." },
+        { handle: "TerryDidntEvenShoot", quote: "Terry didn't even take one. A World Cup quarterfinal. Their best defender. He didn't take a penalty. Why." },
+        { handle: "ItalyWonIt", quote: "Italy won it. In Berlin. With Zidane headbutting Materazzi in the final. England were gone by then, crying into chips somewhere in Baden-Württemberg." },
+      ],
+      legacy:
+        "England's 2006 exit triggers a decade of institutional soul-searching that produces no institutional change. The 'golden generation' tag becomes a term of abuse in British sport. Football journalists retire the phrase permanently by 2010. Rooney carries the metatarsal story for the rest of his career. Lampard and Gerrard never win a major trophy with England. The wink becomes the national wound.",
+    },
+    divergenceScore: 62,
+    chaosScore: 71,
+    winner: "Italy",
+    views: 11280,
+    shares: 3960,
+    upvoteCount: 187,
+  },
+
+  {
+    slug: "spain-tiki-taka-crashes-2010",
+    title: "Tiki-Taka Dies at Birth",
+    scenario: "What if Spain's tiki-taka era crashed at the 2010 group stage and never took off?",
+    summary:
+      "The tactical revolution that defined a decade never happens. Spain go home in the group stage, taking possession football with them. Football's most influential era is erased before it begins.",
+    generatedContent: {
+      title: "Tiki-Taka Dies at Birth",
+      summary:
+        "The tactical revolution that defined a decade never happens. Spain go home in the group stage, taking possession football with them. Football's most influential era is erased before it begins.",
+      butterflyTimeline: [
+        "A flu epidemic in the Spanish camp five days before their opener weakens seven first-team players",
+        "Xavi plays 40% below peak and is substituted in all three group games",
+        "Switzerland's counterpress exposes Spain's lack of a direct striker in the opening match",
+        "Media pressure after the Switzerland loss fractures the squad's cohesion by game two",
+      ],
+      groupStage: [
+        "Spain lose 1-0 to Switzerland in the opener — the pattern holds in this universe too, but the recovery doesn't",
+        "Spain draw Honduras 0-0 in a game described as 'the death of ideas'",
+        "Spain need a win against Chile — lose 2-1 after a Xavi backpass is intercepted",
+        "Spain are eliminated. The squad flies home in silence. del Bosque resigns at the airport.",
+      ],
+      knockoutStage: [
+        "Without Spain, the tournament lacks a tactical identity — it becomes a physical, direct tournament",
+        "Germany power through without the tactical threat of Spain in their half of the draw",
+        "Netherlands reach the final playing brutal, direct football under Van Marwijk",
+        "Germany beat Netherlands 1-0 in a deeply forgettable final. The tournament is immediately forgotten.",
+      ],
+      winner: "Germany",
+      goldenBoot: "Thomas Müller",
+      goldenBall: "Wesley Sneijder",
+      youngPlayer: "Thomas Müller",
+      fairPlay: "New Zealand",
+      headlines: [
+        "Spain Go Home. Football Breathes A Sigh Of Mediocrity.",
+        "Tiki-Taka Experiment Over Before It Began — Del Bosque Resigns",
+        "Germany Win A World Cup No One Will Remember In Five Years",
+        "Xavi's Legacy: A Revolution That Happened Only At Club Level",
+        "2010 World Cup Final: The Least-Watched In 20 Years",
+      ],
+      fanReactions: [
+        { handle: "TikiTakaNevers", quote: "No 2010. No Euro 2012. No 2014. Without Spain's era, football's tactical history has a massive hole in it." },
+        { handle: "XaviGrief", quote: "Imagine Xavi and Iniesta never getting a World Cup winner's medal. In this universe, that's reality." },
+        { handle: "GermanyBoring", quote: "Germany won it and nobody cared. There was no villain. There was no style. There was nothing to debate." },
+        { handle: "TacticsVoid", quote: "Pep Guardiola's Barcelona tiki-taka never gets validated at international level. The revolution stays at club football. Football loses a decade of tactical evolution." },
+        { handle: "CasillasHands", quote: "Iker Casillas made zero saves in the group stage because Spain had zero clean sheets. There is poetry in that, if cruel poetry." },
+        { handle: "VillaWithoutGlory", quote: "David Villa was the best striker in the world in 2010. He went home in the group stage. His career is permanently smaller for it." },
+        { handle: "FootballHistorian", quote: "You cannot overstate what Spain's group stage exit removes from football history. An entire tactical era is aborted." },
+        { handle: "NetherlandsMourning", quote: "Netherlands reach their third final and lose their third final. Van Marwijk builds a team to stop football. Germany just played football. It worked." },
+        { handle: "BoringFinal", quote: "Germany 1-0 Netherlands. One goal. In 90 minutes. For the World Cup. I fell asleep. I genuinely fell asleep." },
+        { handle: "SpainRegret", quote: "This is the universe where Del Bosque is remembered as a failure and Xavi never gets his moment. It is a worse universe. Definitively worse." },
+      ],
+      legacy:
+        "Spain's early exit derails the most influential tactical movement in modern football. Without the 2010-2012 validation, possession football remains a Guardiola experiment rather than a global template. Counter-pressing dominates the following decade. Tactical diversity increases. But something is missing — the proof that patient, beautiful, dominating football can conquer the world. In this universe, that proof never comes.",
+    },
+    divergenceScore: 83,
+    chaosScore: 69,
+    winner: "Germany",
+    views: 7640,
+    shares: 2190,
+    upvoteCount: 96,
+  },
+
+  {
+    slug: "argentina-golden-gen-all-flop-2010",
+    title: "The Golden Generation That Broke Argentina",
+    scenario: "What if Messi, Tevez, Higuaín, and Agüero all played their peak together for Argentina in 2010 — and collectively bottled it?",
+    summary:
+      "Argentina field the most gifted attacking quartet in their history. They score 12 goals in five games and concede 11. They exit 4-0 to Germany in the quarterfinal. It is the most talented and most catastrophic Argentina squad ever assembled.",
+    generatedContent: {
+      title: "The Golden Generation That Broke Argentina",
+      summary:
+        "Argentina field the most gifted attacking quartet in their history. They score 12 goals in five games and concede 11. They exit 4-0 to Germany in the quarterfinal. It is the most talented and most catastrophic Argentina squad ever assembled.",
+      butterflyTimeline: [
+        "Maradona appoints himself manager with no tactical framework beyond 'attack'",
+        "Tevez and Higuaín both want to play as the lone striker — neither plays well as a second",
+        "Argentina's defensive line is permanently high — Germany's analysis team identifies this in game three",
+        "Messi scores three in the group stage but does not track back once. Maradona calls this correct.",
+      ],
+      groupStage: [
+        "Argentina beat Nigeria 1-0 — Messi assists, Higuaín scores, Tevez argues with the assistant manager",
+        "Argentina destroy South Korea 4-1 — it looks like the greatest attacking unit in history",
+        "Argentina beat Greece 2-0 — Agüero scores on his World Cup debut, the crowd weeps with joy",
+        "After three wins, Argentina are 6/4 tournament favourites. Germany have already watched six hours of tape.",
+      ],
+      knockoutStage: [
+        "Argentina beat Mexico 3-1 — Tevez scores an offside goal that is allowed. Mexico are furious. Messi assists twice.",
+        "Argentina beat a weakened Brazil 1-0 — Messi scores a goal so good it silences the Brazilian end",
+        "Germany vs Argentina: Mueller scores in the 3rd minute. Argentina's high line is exploited six times.",
+        "Germany win 4-0. Messi does not have a single shot on target. He touches the ball 23 times in 90 minutes.",
+      ],
+      winner: "Spain",
+      goldenBoot: "Thomas Müller",
+      goldenBall: "Andrés Iniesta",
+      youngPlayer: "Thomas Müller",
+      fairPlay: "New Zealand",
+      headlines: [
+        "Germany 4 Argentina 0: The Death Of A Golden Generation",
+        "Messi: 23 Touches. 0 Shots On Target. 0 Goals. 0 Explanations.",
+        "Maradona's Tactics Board: A Blank Piece Of Paper And An Arrow Pointing Forward",
+        "Tevez, Higuaín, Agüero, Messi — And Still 0-4. Football Doesn't Make Sense.",
+        "Argentina's Best Ever Squad Beaten By Germany's Best Ever Tournament Performance",
+      ],
+      fanReactions: [
+        { handle: "ArgentinaDespair", quote: "Messi. Tevez. Higuaín. Agüero. TOGETHER. And we lost 4-0. I don't want to exist." },
+        { handle: "MaradonaTactics", quote: "His tactical preparation was: pray, gesticulate, cry. In fairness he also had a specific hand gesture for 'Messi do something'." },
+        { handle: "GermanyMachine", quote: "They scored in the 3rd, 67th, 74th and 89th minutes. Clinical, cold, perfect. Argentina's high line was a gift." },
+        { handle: "MessiMuted", quote: "The greatest player of his generation touched the ball 23 times and was invisible. Germany didn't defend Messi. They made the pitch small. He had nowhere to go." },
+        { handle: "BuenosAiresTears", quote: "The streets here were silent after. Not angry-silent. Confused-silent. Like we collectively couldn't process how this happened." },
+        { handle: "AgüeroPeak", quote: "Agüero at 22. Messi at 22. Tevez at 26. Higuaín at 22. All peak. All together. All gone in the quarterfinal. The football gods are spiteful." },
+        { handle: "HighLineCoroner", quote: "The autopsy is simple: Maradona played a high defensive line against a team with Müller, Klose and Özil. No other information is needed." },
+        { handle: "NeverForget", quote: "Messi wept on the pitch after. Not the ugly cry. The quiet cry. The kind where you already know you won't get this chance again." },
+        { handle: "CoachingMatters", quote: "This is proof — permanent proof — that talent without structure isn't just insufficient. It's counterproductive. Eleven individuals do not make a team." },
+        { handle: "TornAlbiceleste", quote: "We had four world-class strikers and defended like a pub team. Maradona was our greatest player and our worst manager. Both things are completely true." },
+      ],
+      legacy:
+        "Argentina's 4-0 humiliation triggers the most profound tactical reformation in South American football history. Maradona is removed. Messi carries the psychological scar into club football — his Barcelona performances after 2010 are visibly angrier, more driven. Argentina spend the next twelve years trying to build defensive structure around him. The weight of that 4-0 shapes everything that follows.",
+    },
+    divergenceScore: 77,
+    chaosScore: 88,
+    winner: "Spain",
+    views: 9870,
+    shares: 3210,
+    upvoteCount: 163,
   },
 
   {
@@ -483,6 +807,7 @@ const seedUniverses = [
     winner: "Scotland",
     views: 9870,
     shares: 3780,
+    upvoteCount: 203,
   },
 ];
 
@@ -490,7 +815,7 @@ async function main() {
   for (const universe of seedUniverses) {
     await prisma.universe.upsert({
       where: { slug: universe.slug },
-      update: {},
+      update: { upvoteCount: universe.upvoteCount ?? 0 },
       create: {
         slug: universe.slug,
         title: universe.title,
@@ -504,6 +829,7 @@ async function main() {
         model: "seed",
         views: universe.views,
         shares: universe.shares,
+        upvoteCount: universe.upvoteCount ?? 0,
       },
     });
   }
