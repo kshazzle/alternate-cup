@@ -2,7 +2,7 @@ import type { Universe } from "@prisma/client";
 import { UniverseGrid } from "./universe-grid";
 
 type ChaoticLeaderboardProps = {
-  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares">>;
+  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares" | "upvoteCount">>;
 };
 
 export function ChaoticLeaderboard({ universes }: ChaoticLeaderboardProps) {

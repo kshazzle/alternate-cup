@@ -144,4 +144,34 @@ export const universeRepository = {
       data: { shares: { increment: 1 } },
     });
   },
+
+  async listTopUpvoted(limit = 12) {
+    return prisma.universe.findMany({
+      orderBy: [{ upvoteCount: "desc" }, { createdAt: "desc" }],
+      take: limit,
+      include: { _count: { select: { branches: true } } },
+    });
+  },
+
+  async search(query: string, limit = 20) {
+    const q = query.trim();
+    if (!q) {
+      return prisma.universe.findMany({
+        orderBy: { createdAt: "desc" },
+        take: limit,
+        include: { _count: { select: { branches: true } } },
+      });
+    }
+    return prisma.universe.findMany({
+      where: {
+        OR: [
+          { title: { contains: q, mode: "insensitive" } },
+          { scenario: { contains: q, mode: "insensitive" } },
+        ],
+      },
+      orderBy: { createdAt: "desc" },
+      take: limit,
+      include: { _count: { select: { branches: true } } },
+    });
+  },
 };

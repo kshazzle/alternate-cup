@@ -3,7 +3,7 @@ import Link from "next/link";
 import { UniverseGrid } from "@/components/rankings/universe-grid";
 
 type TrendingPreviewProps = {
-  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares">>;
+  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares" | "upvoteCount">>;
 };
 
 export function TrendingPreview({ universes }: TrendingPreviewProps) {

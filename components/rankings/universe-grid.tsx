@@ -2,7 +2,7 @@ import type { Universe } from "@prisma/client";
 import { UniverseCard } from "./universe-card";
 
 type UniverseGridProps = {
-  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares">>;
+  universes: Array<Pick<Universe, "slug" | "title" | "scenario" | "summary" | "divergenceScore" | "chaosScore" | "views" | "shares" | "upvoteCount">>;
   emptyTitle?: string;
 };
 

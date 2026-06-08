@@ -4,6 +4,7 @@ import { APP_NAME } from "@/lib/seo/app-name";
 import { baseUrl } from "@/lib/utils/absolute-url";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Navbar } from "@/components/layout/navbar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,7 +43,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-black text-zinc-50">
-        <div className="stadium-grid min-h-screen">{children}</div>
+        <div className="stadium-grid min-h-screen">
+          <Navbar />
+          {children}
+        </div>
         <Analytics />
         <SpeedInsights />
       </body>
