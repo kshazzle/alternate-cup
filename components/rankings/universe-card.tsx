@@ -23,11 +23,11 @@ export function UniverseCard({ universe, rank }: UniverseCardProps) {
             <h3 className="text-2xl font-semibold tracking-tight text-white">{universe.title}</h3>
           </div>
           <p className="line-clamp-3 text-sm leading-6 text-zinc-400">{universe.summary}</p>
-          <div className="mt-auto grid grid-cols-4 gap-3 border-t border-white/10 pt-5 text-xs text-zinc-400">
-            <Metric label="Divergence" value={`${universe.divergenceScore}%`} />
-            <Metric label="Chaos" value={`${universe.chaosScore}%`} />
-            <Metric label="Upvotes" value={`${universe.upvoteCount}`} highlight={universe.upvoteCount > 0} />
-            <Metric label="Heat" value={`${universe.views + universe.shares}`} />
+          <div className="mt-auto grid grid-cols-4 gap-2 border-t border-white/10 pt-5 text-xs text-zinc-400">
+            <Metric label="DIV" value={`${universe.divergenceScore}%`} />
+            <Metric label="CHAOS" value={`${universe.chaosScore}%`} />
+            <Metric label="↑" value={`${universe.upvoteCount}`} highlight={universe.upvoteCount > 0} />
+            <Metric label="HEAT" value={`${universe.views + universe.shares}`} />
           </div>
         </CardContent>
       </Card>
