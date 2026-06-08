@@ -5,6 +5,7 @@ import { checkPersistentRateLimit } from "@/lib/security/rate-limit";
 import { getRequestFingerprint } from "@/lib/security/request-fingerprint";
 import { createUniverseFromScenario } from "@/lib/universes/create-universe";
 import { universeInputSchema } from "@/lib/validation/universe-input.schema";
+import { assessScenarioTopic } from "@/lib/validation/scenario-topic";
 
 export type CreateUniverseState = {
   error?: string;
@@ -20,6 +21,11 @@ export async function createUniverseAction(
 
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Enter a valid scenario." };
+  }
+
+  const topicCheck = assessScenarioTopic(parsed.data.scenario);
+  if (!topicCheck.ok) {
+    return { error: topicCheck.message ?? "Enter a valid football what-if scenario." };
   }
 
   const rateLimit = await checkPersistentRateLimit(await getRequestFingerprint("create"), {

@@ -21,6 +21,27 @@ const OFF_TOPIC_SIGNALS = [
   /\b(system prompt|jailbreak)\b/i,
 ];
 
+// Scenarios that touch real-world politics, active conflicts, or NSFW content.
+// These are blocked regardless of football context.
+const BLOCKED_SIGNALS: { pattern: RegExp; message: string }[] = [
+  {
+    pattern: /\b(war|invasion|genocide|ethnic cleansing|terrorism|terrorist|massacre|bomb|nuke|nuclear|assassination|coup|sanction|embargo|apartheid)\b/i,
+    message: "Keep it football — scenarios involving war, conflict, or political violence aren't supported.",
+  },
+  {
+    pattern: /\b(israel|palestine|gaza|ukraine|russia|taiwan|china|nato|cia|fbi|isis|hamas|hezbollah|putin|trump|biden|modi|xi jinping)\b/i,
+    message: "Keep it football — scenarios involving political figures or active geopolitical conflicts aren't supported.",
+  },
+  {
+    pattern: /\b(sex|sexual|porn|nude|naked|rape|molest|pedophil|underage|explicit|nsfw|onlyfans)\b/i,
+    message: "That scenario isn't appropriate here. Try a football what-if.",
+  },
+  {
+    pattern: /\b(racist|racism|n-?word|slur|hate crime|white supremac|neo-?nazi)\b/i,
+    message: "That scenario isn't appropriate here. Try a football what-if.",
+  },
+];
+
 export type ScenarioTopicAssessment = {
   ok: boolean;
   message?: string;
@@ -28,6 +49,12 @@ export type ScenarioTopicAssessment = {
 
 export function assessScenarioTopic(scenario: string): ScenarioTopicAssessment {
   const text = scenario.trim();
+
+  for (const { pattern, message } of BLOCKED_SIGNALS) {
+    if (pattern.test(text)) {
+      return { ok: false, message };
+    }
+  }
 
   const footballHits = FOOTBALL_SIGNALS.filter((pattern) => pattern.test(text)).length;
   const offTopicHits = OFF_TOPIC_SIGNALS.filter((pattern) => pattern.test(text)).length;
