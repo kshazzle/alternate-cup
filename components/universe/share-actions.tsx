@@ -30,15 +30,9 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
     }
   }
 
-  async function resolveShareUrl() {
+  function resolveShareUrl() {
     const url = getShareUrl();
-
-    try {
-      await recordShare();
-    } catch {
-      // Still share the page the user is actually viewing.
-    }
-
+    recordShare().catch(() => {});
     return url;
   }
 
@@ -71,7 +65,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
   }
 
   async function copyLink() {
-    const url = await resolveShareUrl();
+    const url = resolveShareUrl();
     const copied = await copyToClipboard(url);
 
     if (!copied) {
@@ -86,7 +80,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
 
   async function share() {
     try {
-      const url = await resolveShareUrl();
+      const url = resolveShareUrl();
 
       if (navigator.share) {
         await navigator.share({ title, url });
@@ -142,7 +136,7 @@ export function ShareActions({ slug, title }: ShareActionsProps) {
   }
 
   async function tweetThis() {
-    const url = await resolveShareUrl();
+    const url = resolveShareUrl();
     const text = `${title} — What If? World Cup Edition`;
 
     // On mobile and desktop Safari, Web Share API supports file attachment.
