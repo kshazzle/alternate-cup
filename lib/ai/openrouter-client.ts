@@ -40,7 +40,7 @@ export type ModelClient = {
 };
 
 export function getOpenRouterModel() {
-  return process.env.OPENROUTER_MODEL ?? "google/gemini-flash-1.5";
+  return process.env.OPENROUTER_MODEL ?? "openai/gpt-4o-mini";
 }
 
 export function createOpenRouterClient(): ModelClient {
